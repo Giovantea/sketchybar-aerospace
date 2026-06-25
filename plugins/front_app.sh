@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+case "$SENDER" in
+"mouse.entered" | "mouse.exited")
+	source "$HOME/.config/sketchybar/helpers/ui.sh"
+	apply_hover_animation "$SENDER" "$NAME"
+	exit 0
+	;;
+esac
+
 app_name="$INFO"
 
 if [ -z "$app_name" ] && command -v aerospace >/dev/null 2>&1; then

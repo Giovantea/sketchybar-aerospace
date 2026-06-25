@@ -1,7 +1,27 @@
 #!/usr/bin/env bash
 
-PERCENTAGE=$(pmset -g batt | grep -Eo "\d+%" | cut -d% -f1)
-CHARGING=$(pmset -g batt | grep 'AC Power')
+case "$SENDER" in
+"mouse.entered" | "mouse.exited")
+	source "$HOME/.config/sketchybar/helpers/ui.sh"
+	apply_hover_animation "$SENDER" "$NAME"
+	exit 0
+	;;
+esac
+
+read -r PERCENTAGE CHARGING <<EOF
+$(pmset -g batt | awk '
+/Now drawing from/ && /AC Power/ { charging = 1 }
+/%/ {
+	for (i = 1; i <= NF; i++) {
+		if ($i ~ /%/) {
+			gsub(/[^0-9]/, "", $i)
+			percentage = $i
+		}
+	}
+}
+END { print percentage, charging }
+')
+EOF
 
 if [ "$PERCENTAGE" = "" ]; then
 	exit 0

@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+case "$SENDER" in
+"mouse.entered" | "mouse.exited")
+	source "$HOME/.config/sketchybar/helpers/ui.sh"
+	apply_hover_animation "$SENDER" "$NAME"
+	exit 0
+	;;
+esac
+
 VOLUME=$(osascript -e "output volume of (get volume settings)")
 MUTED=$(osascript -e "output muted of (get volume settings)")
 

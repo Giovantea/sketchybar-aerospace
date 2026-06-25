@@ -7,17 +7,20 @@ sketchybar --add item spotify q \
 	scroll_texts=on \
 	icon=󰎆 \
 	icon.color="$COLOR" \
-	icon.padding_left=10 \
+	icon.padding_left="$CAPSULE_PADDING" \
+	icon.padding_right="$PADDINGS" \
 	background.color="$BAR_COLOR" \
-	background.height=26 \
+	background.height="$CAPSULE_HEIGHT" \
 	background.corner_radius="$CORNER_RADIUS" \
 	background.border_width="$BORDER_WIDTH" \
-	background.border_color="$COLOR" \
-	background.padding_right=-5 \
+	background.border_color="$WIDGET_BORDER_COLOR" \
+	background.padding_left="$WIDGET_SPACING" \
+	background.padding_right="$WIDGET_SPACING" \
 	background.drawing=on \
-	label.padding_right=10 \
+	label.padding_left="$PADDINGS" \
+	label.padding_right="$CAPSULE_PADDING" \
 	label.max_chars=23 \
 	associated_display=active \
 	updates=on \
 	script="$PLUGIN_DIR/spotify.sh" \
-	--subscribe spotify media_change
+	--subscribe spotify media_change mouse.entered mouse.exited

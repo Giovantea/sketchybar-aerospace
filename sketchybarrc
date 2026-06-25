@@ -1,16 +1,14 @@
 #!/usr/bin/env bash
 
-source "$HOME/.config/sketchybar/variables.sh" # Loads all defined colors
-
-# General bar and defaults
+source "$HOME/.config/sketchybar/variables.sh" # Loads shared settings.
 
 sketchybar --bar height=30 \
 	color="$BAR_COLOR" \
 	shadow="$SHADOW" \
 	position=top \
 	sticky=on \
-	padding_right=0 \
-	padding_left=3 \
+	padding_right="$WIDGET_SPACING" \
+	padding_left="$WIDGET_SPACING" \
 	corner_radius="$CORNER_RADIUS" \
 	y_offset=5 \
 	margin=5 \
@@ -25,10 +23,10 @@ sketchybar --bar height=30 \
 	label.color="$LABEL_COLOR" \
 	label.padding_left="$PADDINGS" \
 	label.padding_right="$PADDINGS" \
-	background.padding_right="$PADDINGS" \
-	background.padding_left="$PADDINGS" \
-	popup.background.border_width=1 \
-	popup.background.corner_radius=11 \
+	background.padding_right="$WIDGET_SPACING" \
+	background.padding_left="$WIDGET_SPACING" \
+	popup.background.border_width="$BORDER_WIDTH" \
+	popup.background.corner_radius="$CORNER_RADIUS" \
 	popup.background.border_color="$POPUP_BORDER_COLOR" \
 	popup.background.color="$POPUP_BACKGROUND_COLOR" \
 	popup.background.shadow.drawing="$SHADOW"
@@ -37,7 +35,6 @@ sketchybar --bar height=30 \
 sketchybar --add event aerospace_workspace_change
 
 # Left
-# source "$ITEM_DIR/apple.sh"
 source "$ITEM_DIR/spaces.sh"
 source "$ITEM_DIR/front_app.sh"
 

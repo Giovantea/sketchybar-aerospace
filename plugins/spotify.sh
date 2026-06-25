@@ -1,10 +1,18 @@
 #!/usr/bin/env bash
 
-STATE="$(echo "$INFO" | jq -r '.state')"
-APP="$(echo "$INFO" | jq -r '.app')"
+case "$SENDER" in
+"mouse.entered" | "mouse.exited")
+	source "$HOME/.config/sketchybar/helpers/ui.sh"
+	apply_hover_animation "$SENDER" "$NAME"
+	exit 0
+	;;
+esac
 
-if [ "$STATE" = "playing" ] && [ "$APP" == "Spotify" ]; then
-	MEDIA="$(echo "$INFO" | jq -r '.title + " - " + .artist')"
+[ "$INFO" = "" ] && sketchybar --set "$NAME" drawing=off && exit 0
+
+MEDIA="$(printf '%s' "$INFO" | jq -r 'if .state == "playing" and .app == "Spotify" then ((.title // "") + " - " + (.artist // "")) else empty end')"
+
+if [ "$MEDIA" != "" ]; then
 	sketchybar --set "$NAME" label="$MEDIA" drawing=on
 else
 	sketchybar --set "$NAME" drawing=off
