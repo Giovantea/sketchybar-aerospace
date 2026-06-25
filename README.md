@@ -69,7 +69,7 @@ brew install --cask font-jetbrains-mono-nerd-font
 
 ```sh
 mkdir -p ~/.config
-git clone <your-repo-url> ~/.config/sketchybar
+git clone https://github.com/Giovantea/sketchybar-aerospace.git ~/.config/sketchybar
 ```
 
 If you are copying from an existing checkout, place it at:
