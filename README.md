@@ -6,13 +6,6 @@ This is a SketchyBar configuration ported from `yabai` space handling to AeroSpa
 
 ![SketchyBar desktop screenshot](screenshots/sketchybar-desktop.png)
 
-If the screenshot is missing after a fresh clone, capture your current desktop after setup:
-
-```sh
-mkdir -p screenshots
-screencapture -x screenshots/sketchybar-desktop.png
-```
-
 ## What You Get
 
 - Numbered AeroSpace workspaces in numeric order.
